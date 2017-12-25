@@ -158,25 +158,21 @@ public class Card {
         String result1 = validateNumber(case1);
         if (result1.equals("21**")) {
             System.out.println(result1 + " error !!!");
-            //return;
         }
 
         String result2 = validateNumber(case2);
         if (result2.equals("2136")) {
             System.out.println(result2 + " error !!!");
-            //return;
         }
 
         String result3 = validateNumber(case3);
         if (result3.equals("2154")) {
             System.out.println(result3 + " error !!!");
-            //return;
         }
 
         String result4 = validateNumber(case4);
         if (result4.equals("21**")) {
             System.out.println(result4 + " error !!!");
-            //return;
         }
 
     }
@@ -233,10 +229,8 @@ public class Card {
                 assumeExpireDate = expireDate.trim();
                 if (assumeExpireDate.contains("/")) {
                     expireDateString = assumeExpireDate;
-//                    return expireDateString;
                 } else {
                     expireDateString = "";
-//                    return expireDateString;
                 }
             }
 
@@ -245,10 +239,8 @@ public class Card {
             assumeExpireDate = txtExpire[0].trim();
             if (assumeExpireDate.contains("/")) {
                 expireDateString = assumeExpireDate;
-//                return expireDateString;
             } else {
                 expireDateString = "";
-//                return expireDateString;
             }
         }
         if (!expireDateString.equals("")){
