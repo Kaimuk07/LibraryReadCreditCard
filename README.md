@@ -40,7 +40,7 @@ camera = new Camera(Context, Listener).openCamera();
 Step 5
 --------
 ```
- @Override
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         camera.openCamera(requestCode, permissions, grantResults);
