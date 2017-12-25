@@ -4,7 +4,7 @@ Step 1
 --------
 
 Add the JitPack repository to your build file:
-```xml
+```
 allprojects {
 		repositories {
 			...
@@ -16,45 +16,39 @@ Step 2
 --------
 
 Add the dependency:
-```groovy
+```
 dependencies {
 	        compile 'com.github.Kaimuk07:LibraryReadCreditCard:-SNAPSHOT'
 	}
 ```
 
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
-
-Retrofit requires at minimum Java 7 or Android 2.3.
-
-
-ProGuard
+Step 3
 --------
 
-If you are using ProGuard you might need to add the following options:
 ```
--dontwarn okio.**
--dontwarn javax.annotation.**
+implements Camera.CallBack
 ```
 
 
-License
-=======
+Step 4
+--------
 
-    Copyright 2013 Square, Inc.
+```
+camera = new Camera(Context, Listener).openCamera();
+```
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Step 5
+--------
+```
+ @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        camera.openCamera(requestCode, permissions, grantResults);
+    }
 
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-
- [1]: http://square.github.io/retrofit/
- [2]: https://search.maven.org/remote_content?g=com.squareup.retrofit2&a=retrofit&v=LATEST
- [snap]: https://oss.sonatype.org/content/repositories/snapshots/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        camera.onActivityResultCamera(requestCode, resultCode, data);
+    }
+```
