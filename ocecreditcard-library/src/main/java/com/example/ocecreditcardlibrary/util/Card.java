@@ -55,13 +55,14 @@ public class Card {
     public void cutSting() {
 //        unitTest_isInteger();
 //        unitTest_validateNumber();
-        unitTest_validateExpireDate();
+        ;
         String[] arrayString = message.split("\n");
         String arrStr = arrayString.toString();
 //        String[] tmpArrStr = arrStr.split(" ");
         checkIdCardFromArrayList();
         findExpireDate();
 
+//        unitTest_validateExpireDate();
 
     }
 
@@ -236,10 +237,10 @@ public class Card {
                 assumeExpireDate = expireDate.trim();
                 if (assumeExpireDate.contains("/")) {
                     expireDateString = assumeExpireDate;
-                    return expireDateString;
+//                    return expireDateString;
                 } else {
                     expireDateString = "";
-                    return expireDateString;
+//                    return expireDateString;
                 }
             }
 
@@ -248,13 +249,15 @@ public class Card {
             assumeExpireDate = txtExpire[0].trim();
             if (assumeExpireDate.contains("/")) {
                 expireDateString = assumeExpireDate;
-                return expireDateString;
+//                return expireDateString;
             } else {
                 expireDateString = "";
-                return expireDateString;
+//                return expireDateString;
             }
         }
-        setExpDate(expireDateString);
+        if (!expireDateString.equals("")){
+            setExpDate(expireDateString);
+        }
         return expireDateString;
     }
 
@@ -263,31 +266,31 @@ public class Card {
         String expString = "30ad EXP 20/17";
         String expireDate = validateExpireDate(expString);
         if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expDate+".");
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
         }
 
         String dashString = "2/18 - 20/17";
         expireDate = validateExpireDate(dashString);
         if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expDate+".");
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
         }
 
         String spaceString = "2/02 20/27";
-        expireDate = validateExpireDate(expDate);
+        expireDate = validateExpireDate(spaceString);
         if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expDate+".");
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
         }
 
         String onlyOneString = "20/17";
         expireDate = validateExpireDate(onlyOneString);
         if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expDate+".");
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
         }
 
         String notExpireDate = "I am Muk";
         expireDate = validateExpireDate(notExpireDate);
         if (!expireDate.equals("20/17")){
-            System.out.println("Something wrong"+expDate+".");
+            System.out.println("Something wrong"+expireDate+".");
         }
 
     }

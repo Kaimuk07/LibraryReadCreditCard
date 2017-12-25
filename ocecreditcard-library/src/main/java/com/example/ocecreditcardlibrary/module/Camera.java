@@ -1,10 +1,14 @@
 package com.example.ocecreditcardlibrary.module;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 import com.example.ocecreditcardlibrary.config.Global;
 import com.example.ocecreditcardlibrary.util.Card;
@@ -29,10 +33,41 @@ public class Camera implements CallService.CallBackService {
         this.callBack = callBack;
     }
 
+    public void openCamera(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == Global.requestCamera) {
+
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+
+            }
+
+        }
+    }
+
     public Camera openCamera() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        ((Activity) context).startActivityForResult(intent, Global.requestCamera);
+        if (checkPermissionCameraOpen()) {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            ((Activity) context).startActivityForResult(intent, Global.requestCamera);
+        } else {
+
+        }
         return this;
+    }
+
+    private boolean checkPermissionCameraOpen() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (context.checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ((Activity) context).requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        Global.requestCamera);
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
     }
 
     public Bitmap checkResultCamera(int requestCode, int resultCode, Intent data) {
@@ -74,11 +109,16 @@ public class Camera implements CallService.CallBackService {
     }
 
 
+
     public interface CallBack {
         public void checkResultCameraSuccess(Bitmap bitmap);
+
         public void checkResultCameraFailed(int requestCode, int resultCode, Intent data);
+
         public void loading();
+
         public void failed(String message);
+
         public void success(Card card);
 
 
