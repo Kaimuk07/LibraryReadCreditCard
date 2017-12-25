@@ -1,4 +1,4 @@
-How to LibrarReaCreditCard
+How to LibrarReadCreditCard
 ========
 Step 1
 --------
