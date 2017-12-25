@@ -53,22 +53,19 @@ public class Card {
 
 
     public void cutSting() {
-//        unitTest_isInteger();
-//        unitTest_validateNumber();
-        ;
+
         String[] arrayString = message.split("\n");
         String arrStr = arrayString.toString();
-//        String[] tmpArrStr = arrStr.split(" ");
+
         checkIdCardFromArrayList();
         findExpireDate();
 
-//        unitTest_validateExpireDate();
 
     }
 
 
     private void checkIdCardFromArrayList() {
-//        Log.d(message, "checkIdCardFromArrayList: ");
+
         String idCardNum = "";
         for (EntityAnnotation item : arrayList) {
             String tmpMessage = item.getDescription();
@@ -95,12 +92,11 @@ public class Card {
 
     }
 
-    private String validateNumber(String n) {
-//        n = "a012";
-        if (n.length() == 4) {
+    private String validateNumber(String string) {
+        if (string.length() == 4) {
             //เช็คแต่ละชุดครบ4
             String tmpNum = "";
-            String[] tmpNumber = n.split("");
+            String[] tmpNumber = string.split("");
             for (int h = 1; h < tmpNumber.length; h++) {
                 if (isInteger(tmpNumber[h])) {
                     tmpNum = tmpNum + tmpNumber[h];
@@ -109,9 +105,9 @@ public class Card {
                 }
             }
             strNum = tmpNum;
-        } else if (n.length() < 4) {
+        } else if (string.length() < 4) {
             String tmpNum = "";
-            String[] tmpNumber = n.split("");
+            String[] tmpNumber = string.split("");
             for (int h = 1; h < tmpNumber.length; h++) {
                 if (isInteger(tmpNumber[h])) {
                     tmpNum = tmpNum + tmpNumber[h];
@@ -122,14 +118,14 @@ public class Card {
             }
             strNum = tmpNum;
 
-        } else if (n.length() > 4) {
+        } else if (string.length() > 4) {
 
             String tmpNum = "";
-            String[] tmpNumber = n.split("");
-            for (int h = 1; h < tmpNumber.length; h++) {
+            String[] strNumber = string.split("");
+            for (int h = 1; h < strNumber.length; h++) {
                 if (tmpNum.length() < 4) {
-                    if (isInteger(tmpNumber[h])) {
-                        tmpNum = tmpNum + tmpNumber[h];
+                    if (isInteger(strNumber[h])) {
+                        tmpNum = tmpNum + strNumber[h];
                     } else {
                         tmpNum = tmpNum + "*";
                     }
