@@ -34,7 +34,6 @@ import java.util.List;
  */
 
 public class CallService {
-    private String TAG = "CallService";
     private String api = "TEXT_DETECTION";
     private Feature feature;
     private CallBackService callBackService;
@@ -97,13 +96,10 @@ public class CallService {
                     return resultService;
                 } catch (GoogleJsonResponseException e) {
                     resultService.setFailed("failed to make API request because " + e.getContent());
-//                    Log.d(TAG, "failed to make API request because " + e.getContent());
                 } catch (IOException e) {
                     resultService.setFailed("failed to make API request because of other IOException " + e.getMessage());
-//                    Log.d(TAG, "failed to make API request because of other IOException " + e.getMessage());
                 } catch (Exception e) {
                     resultService.setFailed("failed exception");
-//                    Log.d(TAG, "doInBackground: " );
                     e.printStackTrace();
                 }
                 resultService.setFailed("Cloud Vision API request failed. Check logs for details.");
@@ -134,7 +130,6 @@ public class CallService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
         byte[] imageBytes = byteArrayOutputStream.toByteArray();
-
         // Base64 encode the JPEG
         base64EncodedImage.encodeContent(imageBytes);
         return base64EncodedImage;
@@ -151,14 +146,12 @@ public class CallService {
                 message = entity.getDescription();
             } else {
                 message = message + "\n" + entity.getDescription();
-
             }
         }
 
         Success success = new Success();
         success.setArrayList(arrayList);
         success.setMessage(message);
-
         return success;
     }
 

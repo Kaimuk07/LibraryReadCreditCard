@@ -22,13 +22,12 @@
             android:layout_marginRight="8dp"
             app:srcCompat="@android:drawable/alert_dark_frame" />
 
-        <Button
+
+        <ImageView
             android:id="@+id/takePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/imageView"
-            android:layout_below="@+id/imageView"
-            android:text="Take Picture" />
+            app:srcCompat="@android:drawable/ic_menu_camera" />
 
         <TextView
             android:id="@+id/idCard"

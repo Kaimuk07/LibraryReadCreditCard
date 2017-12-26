@@ -1,7 +1,5 @@
 package com.example.ocecreditcardlibrary.util;
 
-import android.util.Log;
-
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 
 import java.util.ArrayList;
@@ -11,13 +9,13 @@ import java.util.ArrayList;
  */
 
 public class Card {
+    String strNum = "";
+    String checkExp = "";
+    boolean number;
     private String message;
     private ArrayList<EntityAnnotation> arrayList;
     private String idCard;
     private String expDate;
-    String strNum = "";
-    String checkExp = "";
-    boolean number;
 
     public String getMessage() {
         return message;
@@ -53,7 +51,6 @@ public class Card {
 
 
     public void cutSting() {
-
         String[] arrayString = message.split("\n");
         String arrStr = arrayString.toString();
 
@@ -80,7 +77,6 @@ public class Card {
                     for (int c = 0; c < arrayplatter.length; c++) {
                         strNum = arrayplatter[c];
                         validateNumber(strNum);
-
                         idCardNum = idCardNum + strNum;
                     }
 
@@ -198,19 +194,20 @@ public class Card {
 
     }
 
-    private String findExpireDate(){
-        for (EntityAnnotation item:arrayList) {
+    private String findExpireDate() {
+        String tmpExp = "";
+        for (EntityAnnotation item : arrayList) {
             String tmpMessage = item.getDescription();
             String[] arrText = tmpMessage.split("\n");
-            for (int i = 0; i < arrText.length ; i++){
+            for (int i = 0; i < arrText.length; i++) {
                 String exp = validateExpireDate(arrText[i]);
-                if (exp.contains("/")){
+                if (exp.contains("/")) {
                     //functionเสริม
                     return exp;
                 }
             }
         }
-        return  "";
+        return "";
     }
 
     private String validateExpireDate(String findExp) {
@@ -243,42 +240,42 @@ public class Card {
                 expireDateString = "";
             }
         }
-        if (!expireDateString.equals("")){
+        if (!expireDateString.equals("")) {
             setExpDate(expireDateString);
         }
         return expireDateString;
     }
 
 
-    private void unitTest_validateExpireDate(){
+    private void unitTest_validateExpireDate() {
         String expString = "30ad EXP 20/17";
         String expireDate = validateExpireDate(expString);
-        if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
+        if (!expireDate.equals("20/17")) {
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got" + expireDate + ".");
         }
 
         String dashString = "2/18 - 20/17";
         expireDate = validateExpireDate(dashString);
-        if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
+        if (!expireDate.equals("20/17")) {
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got" + expireDate + ".");
         }
 
         String spaceString = "2/02 20/27";
         expireDate = validateExpireDate(spaceString);
-        if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
+        if (!expireDate.equals("20/17")) {
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got" + expireDate + ".");
         }
 
         String onlyOneString = "20/17";
         expireDate = validateExpireDate(onlyOneString);
-        if (!expireDate.equals("20/17")){
-            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got"+expireDate+".");
+        if (!expireDate.equals("20/17")) {
+            System.out.println("EXP : Expire date is not match,it must be 20/27 but you got" + expireDate + ".");
         }
 
         String notExpireDate = "I am Muk";
         expireDate = validateExpireDate(notExpireDate);
-        if (!expireDate.equals("20/17")){
-            System.out.println("Something wrong"+expireDate+".");
+        if (!expireDate.equals("20/17")) {
+            System.out.println("Something wrong" + expireDate + ".");
         }
 
     }

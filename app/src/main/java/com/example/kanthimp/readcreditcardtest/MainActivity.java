@@ -21,7 +21,7 @@ import com.example.ocecreditcardlibrary.util.Card;
 public class MainActivity extends AppCompatActivity implements Camera.CallBack {
 
     Camera camera;
-    Button takePicture;
+    ImageView takePicture;
     ImageView imageView;
     TextView idCard;
     TextView expDate;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements Camera.CallBack {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        takePicture = (Button) findViewById(R.id.takePicture);
+        takePicture = (ImageView) findViewById(R.id.takePicture);
         imageView = (ImageView) findViewById(R.id.imageView);
         idCard = (TextView) findViewById(R.id.idCard);
         expDate = (TextView) findViewById(R.id.expDate);
