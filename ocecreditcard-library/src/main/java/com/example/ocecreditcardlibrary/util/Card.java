@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class Card {
     String strNum = "";
-    String checkExp = "";
-    boolean number;
     private String message;
     private ArrayList<EntityAnnotation> arrayList;
     private String idCard;
