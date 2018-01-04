@@ -76,7 +76,7 @@ public class Card {
                         strNum = arrayplatter[c];
                         validateNumber(strNum);
                         if (idCardNum == ""){
-                            idCardNum = idCardNum + "  " + strNum;
+                            idCardNum = idCardNum + " " + strNum;
                         }else {
                             idCardNum = idCardNum + " " + strNum;
                         }
@@ -240,7 +240,7 @@ public class Card {
             if (assumeExpireDate.contains("/")) {
                 expireDateString = "  " + assumeExpireDate;
             } else {
-                expireDateString = "";
+                expireDateString = "Please enter the Expire Date";
             }
         }
         if (!expireDateString.equals("")) {
