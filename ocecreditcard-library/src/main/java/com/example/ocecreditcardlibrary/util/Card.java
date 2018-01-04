@@ -75,7 +75,12 @@ public class Card {
                     for (int c = 0; c < arrayplatter.length; c++) {
                         strNum = arrayplatter[c];
                         validateNumber(strNum);
-                        idCardNum = idCardNum + strNum;
+                        if (idCardNum == ""){
+                            idCardNum = idCardNum + "  " + strNum;
+                        }else {
+                            idCardNum = idCardNum + " " + strNum;
+                        }
+
                     }
 
                 }
@@ -233,7 +238,7 @@ public class Card {
         } else {
             assumeExpireDate = txtExpire[0].trim();
             if (assumeExpireDate.contains("/")) {
-                expireDateString = assumeExpireDate;
+                expireDateString = "  " + assumeExpireDate;
             } else {
                 expireDateString = "";
             }
