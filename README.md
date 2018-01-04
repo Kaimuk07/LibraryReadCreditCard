@@ -18,15 +18,16 @@ Step 2
 Add the dependency:
 ```
 dependencies {
-   compile 'com.github.Kaimuk07:LibraryReadCreditCard:v3'
+      compile 'com.github.Kaimuk07:LibraryReadCreditCard:v3.1'
 	}
 ```
 
 Step 3
 --------
-
+Premission in AndroidManifest.xml
 ```
-implements Camera.CallBack
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.CAMERA" />
 ```
 
 
@@ -34,7 +35,32 @@ Step 4
 --------
 
 ```
-camera = new Camera(Context, Listener).openCamera();
+camera = new Camera(MainActivity.this, new Camera.CallBack() {
+    @Override
+    public void checkResultCameraSuccess(Bitmap bitmap) {
+                  
+    }
+	
+    @Override
+    public void checkResultCameraFailed(int requestCode, int resultCode, Intent data) {
+	
+    }
+	
+    @Override
+    public void loading() {
+	
+    }
+	
+    @Override
+    public void failed(String message) {
+	
+    }
+	
+    @Override
+    public void success(Card card) {
+	
+    }
+}).openCamera();
 ```
 
 Step 5
