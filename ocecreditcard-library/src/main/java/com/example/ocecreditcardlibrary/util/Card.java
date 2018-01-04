@@ -240,7 +240,7 @@ public class Card {
             if (assumeExpireDate.contains("/")) {
                 expireDateString = "  " + assumeExpireDate;
             } else {
-                expireDateString = "Please enter the Expire Date";
+                expireDateString = "";
             }
         }
         if (!expireDateString.equals("")) {
