@@ -18,7 +18,7 @@ Step 2
 Add the dependency:
 ```
 dependencies {
-      compile 'com.github.Kaimuk07:LibraryReadCreditCard:v3.3'
+	compile 'com.github.Kaimuk07:LibraryReadCreditCard:v4'
 	}
 ```
 
