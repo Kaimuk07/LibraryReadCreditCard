@@ -18,7 +18,7 @@ Step 2
 Add the dependency:
 ```
 dependencies {
-	compile 'com.github.Kaimuk07:LibraryReadCreditCard:v4'
+	compile 'com.github.Kaimuk07:LibraryReadCreditCard:v4.1'
 	}
 ```
 
@@ -34,8 +34,8 @@ Step 4
 --------
 set Key API and Key Request Camara
 ```
-	Global.getInstance().setCloudVisionKey("KEY");
-    Global.getInstance().setRequestCamera(2626);//"KEY Request Camare default value 2626"
+		Global.getInstance().setCloudVisionKey("KEY");
+		Global.getInstance().setRequestCamera(2626);//"KEY Request Camare default value 2626"
 ```
 
 
