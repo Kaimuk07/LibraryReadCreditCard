@@ -79,7 +79,7 @@ public class CallService {
                     HttpTransport httpTransport = AndroidHttp.newCompatibleTransport();
                     JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
 
-                    VisionRequestInitializer requestInitializer = new VisionRequestInitializer(Global.CLOUD_VISION_API_KEY);
+                    VisionRequestInitializer requestInitializer = new VisionRequestInitializer(Global.getInstance().getCloudVisionKey());
 
                     Vision.Builder builder = new Vision.Builder(httpTransport, jsonFactory, null);
                     builder.setVisionRequestInitializer(requestInitializer);

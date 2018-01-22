@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ocecreditcardlibrary.config.Global;
 import com.example.ocecreditcardlibrary.module.Camera;
 import com.example.ocecreditcardlibrary.util.Card;
 
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements Camera.CallBack {
         txtFailed = (TextView) findViewById(R.id.txtFailed);
         txtSuccess = (TextView) findViewById(R.id.txtSuccess);
 
-
+        Global.getInstance().setCloudVisionKey("KEY API");
+        Global.getInstance().setRequestCamera(2626);//"KEY Request Camara default value 2626"
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

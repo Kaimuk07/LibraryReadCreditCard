@@ -34,21 +34,19 @@ public class Camera implements CallService.CallBackService {
     }
 
     public void openCamera(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == Global.requestCamera) {
-
+        if (requestCode == Global.getInstance().getRequestCamera()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
             } else {
 
             }
-
         }
     }
 
     public Camera openCamera() {
         if (checkPermissionCameraOpen()) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            ((Activity) context).startActivityForResult(intent, Global.requestCamera);
+            ((Activity) context).startActivityForResult(intent, Global.getInstance().getRequestCamera());
         } else {
 
         }
@@ -60,7 +58,7 @@ public class Camera implements CallService.CallBackService {
             if (context.checkSelfPermission(Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
                 ((Activity) context).requestPermissions(new String[]{Manifest.permission.CAMERA},
-                        Global.requestCamera);
+                        Global.getInstance().getRequestCamera());
                 return false;
             } else {
                 return true;
@@ -72,7 +70,7 @@ public class Camera implements CallService.CallBackService {
 
     public Bitmap checkResultCamera(int requestCode, int resultCode, Intent data) {
         Bitmap bitmap = null;
-        if (requestCode == Global.requestCamera && resultCode == ((Activity) context).RESULT_OK) {
+        if (requestCode == Global.getInstance().getRequestCamera() && resultCode == ((Activity) context).RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
         }
         return bitmap;
@@ -80,7 +78,7 @@ public class Camera implements CallService.CallBackService {
 
     public void onActivityResultCamera(int requestCode, int resultCode, Intent data) {
         Bitmap bitmap = null;
-        if (requestCode == Global.requestCamera && resultCode == ((Activity) context).RESULT_OK) {
+        if (requestCode == Global.getInstance().getRequestCamera() && resultCode == ((Activity) context).RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
             setcallCloudVision(bitmap);
             callBack.checkResultCameraSuccess(bitmap);

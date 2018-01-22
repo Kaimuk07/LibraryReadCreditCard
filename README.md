@@ -30,8 +30,16 @@ Premission in AndroidManifest.xml
 <uses-permission android:name="android.permission.CAMERA" />
 ```
 
-
 Step 4
+--------
+set Key API and Key Request Camara
+```
+	Global.getInstance().setCloudVisionKey("KEY");
+    Global.getInstance().setRequestCamera(2626);//"KEY Request Camare default value 2626"
+```
+
+
+Step 5
 --------
 
 ```
@@ -63,7 +71,7 @@ camera = new Camera(MainActivity.this, new Camera.CallBack() {
 }).openCamera();
 ```
 
-Step 5
+Step 6
 --------
 ```
     @Override
